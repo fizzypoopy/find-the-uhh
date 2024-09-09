@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Find the Uhh</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="selection">
+                <label for="itemSelect">Looking for something?</label>
+                <select name="items" id="itemSelect">
+                    <option value="noSelect">--Select Lost-And-Found Items Here--</option>
+                </select>
+            </div>
+            <div id="submitForm">
+                <p>Can't find it? Submit a form here</p>
+                <p style="font-size:xx-large;">⤳</p>
+                <form class="itemForm">
+                    <label for="itemName">Item's Name:</label>
+                    <input type="text" id="itemName" name="itemName">
+                </form>
+                <form class="itemForm">
+                    <label for="filename">Item's Sound:</label>
+                    <input type="file" id="myFile" name="filename">
+                    <input type="submit" id="submit">
+                </form>
+            </div>
+        </div>
+
+        <div id="center">
+            <div id="startBox">
+                <h1>Find the <span id="selectedItem">Uhh</span></h1>
+                <p>just uhh <span id="centerWave">wave</span> or <span id="centerTap">tap</span> around. they'll be <span id="center-shout">shouting</span> out to you.</p>
+                <div id="soundPara">
+                    <img alt="speaker" src="images/Speaker_Icon.png" id="speaker">
+                    <p id="audioRemind">audio up!</p>
+                </div>
+                <button id="start">Start</button>
+            </div>
+        </div>
+
+        <footer>
+            <div id="reference">Reference</div>
+            <div id="creator">By HL</div>
+        </footer>
+    </body>
+</html>
