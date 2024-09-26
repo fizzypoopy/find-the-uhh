@@ -17,15 +17,22 @@
             <div id="submitForm">
                 <p>Can't find it? Submit a form here</p>
                 <p style="font-size:xx-large;">⤳</p>
-                <form class="itemForm">
+                <div class="itemForm">
                     <label for="itemName">Item's Name:</label>
                     <input type="text" id="itemName" name="itemName">
-                </form>
-                <form class="itemForm">
+
+                    <label for="itemPhoto">Item's Photo:</label>
+                    <input type="file" id="itemPhoto" name="itemPhoto">
+
                     <label for="filename">Item's Sound:</label>
                     <input type="file" id="myFile" name="filename">
-                    <input type="submit" id="submit">
-                </form>
+
+                    <label for="filenameFound">Item's Found Sound:</label>
+                    <input type="file" id="myFileFound" name="filenameFound">
+
+                    <button id="submit">Submit</button>
+                    <div id="alertBox">Form Submitted</div>
+                </div>
             </div>
         </div>
 

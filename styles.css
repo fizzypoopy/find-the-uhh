@@ -23,13 +23,29 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: start;
     gap: 1em;
 }
 
 .itemForm {
     border: 0.1em solid gray;
     padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    gap: 0.25em;
+}
+
+#alertBox {
+    padding: 1em;
+    margin: 0.25em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
 }
 
 /*CENTER*/
@@ -47,7 +63,7 @@ body{
 #center img {
     max-width: 100%; /* Ensures the image doesn't overflow the container */
     max-height: 100%; /* Ensures the image doesn't overflow the container */
-  }
+}
 
 #startBox {
     display: flex;

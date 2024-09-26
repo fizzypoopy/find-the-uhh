@@ -1,37 +1,7 @@
+
 let body = document.querySelector("body");
 let header = document.querySelector("#header");
-
-//OPTION IMG FILES
-const imgBob = "images/bob.gif";
-
-//OPTION AUDIO FILES
-const soundUhh = new Audio("sounds/uhh.mp3");
-const soundBob = new Audio("sounds/bobScream.mp3");
-const soundBobFound = new Audio("sounds/bobFound.mp3");
-
-//OPTION ELEMENTS
-let selectOpt = [
-    "Cow",
-    "Crocodile",
-    "Cat",
-    "Bred",
-    "Bob",
-    "Bear",
-    "Dog",
-    "Shoebill",
-];
-selectOpt.sort();
-
 let selectDiv = document.querySelector("#itemSelect");
-
-selectOpt.map((value, _) => createOpt(value));
-
-function createOpt(value) {
-    const newOption = document.createElement("option");
-    newOption.value = value;
-    newOption.text = value;
-    selectDiv.appendChild(newOption);
-};
 
 //FORM REFERENCES
 let selection = document.querySelector("#selection");
@@ -39,6 +9,7 @@ let form = document.querySelector("#submitForm");
 let formName = document.querySelector("#itemName");
 let formFile = document.querySelector("#myFile");
 let formSubmit = document.querySelector("#submit");
+let alertBox = document.querySelector("#alertBox");
 
 //CENTER PAGE REFERENCES
 let centerBox = document.querySelector("#center");
@@ -55,6 +26,131 @@ let start = document.querySelector("#start");
 //FOOTER REFERENCES
 let reference =  document.querySelector("#reference");
 let creator = document.querySelector("#creator");
+
+
+//IMG FILES
+// const imgBob = "images/bob.gif";
+
+//AUDIO FILES
+const soundUhh = new Audio("sounds/uhh.mp3");
+
+//OPTION FILES
+let objectPairs = {
+    "Bob": {
+        // name: "Bob", 
+        img: "images/bob.gif",
+        sound: new Audio("sounds/bobScream.mp3"), 
+        found: new Audio("sounds/bobFound.mp3"), 
+    },
+    "Uhh": { //DELETE THIS OBJECT LATER, WHEN TESTING IS DONE!!!!!
+        // name: "Uhh", 
+        img: "images/bob.gif",
+        sound: new Audio("sounds/bobScream.mp3"), 
+        found: new Audio("sounds/bobFound.mp3"), 
+    },
+    "Cow": {
+        // name: "Cow", 
+        img: "images/cow.gif",
+        sound: new Audio("sounds/cowScream.mp3"),
+        found: new Audio("sounds/cowFound.mp3"),
+    },
+    "Crocodile": {
+        // name: "Crocodile",
+        img: "images/croc.gif",
+        sound: new Audio("sounds/crocScream.mp3"),
+        found: new Audio("sounds/crocFound.mp3"),
+    },
+    "Cat": {
+        // name: "Cat",
+        img: "images/cat.gif",
+        sound: new Audio("sounds/catScream.mp3"),
+        found: new Audio("sounds/catFound.mp3"),
+    },
+    "Bred-wip": {
+        // name: "Bred",
+        img: "images/bred.gif",
+        sound: new Audio(),
+        found: new Audio(),
+    },
+    "Bear": {
+        // name: "Bear",
+        img: "images/bear.gif",
+        sound: new Audio("sounds/bearScream.mp3"),
+        found: new Audio("sounds/bearFound.mp3"),
+    },
+    "Dog": {
+        // name: "Dog",
+        img: "images/dog.gif",
+        sound: new Audio("sounds/dogScream.mp3"),
+        found: new Audio("sounds/dogFound.mp3"),
+    },
+    "Shoebill": {
+        // name: "Shoebill",
+        img: "images/shoebill.gif",
+        sound: new Audio("sounds/shoebillScream.mp3"),
+        found: new Audio("sounds/shoebillFound.mp3"),
+    },
+
+    // selectedFunc: function updateSeleted(name, img, sound, found) {
+    //     this.name = name;
+    //     this.img = img;
+    //     this.sound = sound;
+    //     this.found = found;
+    // },
+};
+
+// let updatedOpt = {
+//     name: "",
+//     img: "",
+//     sound: new Audio(),
+//     found: new Audio(),
+// };
+
+let sortedOpts = [];
+for (const objName in objectPairs) {
+    sortedOpts.push(objName);
+};
+sortedOpts.sort();
+sortedOpts.map((value, _) => createOpt(value));
+
+
+//UPDATE CENTER
+selectDiv.addEventListener("click", () => updateCenter(itemSelect.value));
+function updateCenter(value) {
+    if (itemSelect.value == "noSelect") {
+        selectedItem.textContent = "Uhh";
+    } else {
+        selectedItem.textContent = `${itemSelect.value}`;
+    };
+};
+
+function createOpt(value) {
+    const newOption = document.createElement("option");
+    newOption.value = value;
+    newOption.text = value;
+    selectDiv.appendChild(newOption);
+};
+
+//submitForm FUNCTION
+    //SUBMIT ITEM NAME
+    //SUBMIT SOUND FILE
+
+    let selected = "Uhh";
+    // createOpt(selected);
+
+    function submitForm(value) {
+        selectOpt.push(formName.value);
+        createOpt(formName.value);
+        formName.value = "";
+        selected = formName.value;
+        // Object.assign(updatedOpt, objectPairs.selected);
+    };
+    // Object.assign(updatedOpt, objectPairs.Bob);
+
+    // formSubmit.addEventListener("click", () => {
+    //     submitForm(formName.value);
+    //     alertBox.fadeIn(300).delay(1500).fadeOut(400); //????????????/
+    // });
 
 //SCRIPT
 function playItemSound(src) {
@@ -157,7 +253,7 @@ function play(src, audio, audioFound) {
             playImg.addEventListener("mouseover", () => {
                 isFound = true;
                 endGame(playImg, audioFound);
-            }); //FIX SOUNDS TO DYNAMIC
+            }); //FIXed SOUNDS TO DYNAMIC??????????????????
         });
 
 
@@ -175,5 +271,6 @@ function endGame(playImg, audioFound) {
 
 //GAME START BUTTON
 start.addEventListener("click", () => {
-    play(imgBob, soundBob, soundBobFound)
-}); //FIX IMAGE & AUDIO TO DYNAMIC
+    let selectedOpt = objectPairs[itemSelect.value];
+    play(selectedOpt.img, selectedOpt.sound, selectedOpt.found)
+}); //FIXed TO DYNAMIC????????????????????
