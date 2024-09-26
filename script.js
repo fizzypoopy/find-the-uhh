@@ -29,7 +29,6 @@ let creator = document.querySelector("#creator");
 
 
 //IMG FILES
-// const imgBob = "images/bob.gif";
 
 //AUDIO FILES
 const soundUhh = new Audio("sounds/uhh.mp3");
@@ -38,12 +37,6 @@ const soundUhh = new Audio("sounds/uhh.mp3");
 let objectPairs = {
     "Bob": {
         // name: "Bob", 
-        img: "images/bob.gif",
-        sound: new Audio("sounds/bobScream.mp3"), 
-        found: new Audio("sounds/bobFound.mp3"), 
-    },
-    "Uhh": { //DELETE THIS OBJECT LATER, WHEN TESTING IS DONE!!!!!
-        // name: "Uhh", 
         img: "images/bob.gif",
         sound: new Audio("sounds/bobScream.mp3"), 
         found: new Audio("sounds/bobFound.mp3"), 
@@ -90,21 +83,7 @@ let objectPairs = {
         sound: new Audio("sounds/shoebillScream.mp3"),
         found: new Audio("sounds/shoebillFound.mp3"),
     },
-
-    // selectedFunc: function updateSeleted(name, img, sound, found) {
-    //     this.name = name;
-    //     this.img = img;
-    //     this.sound = sound;
-    //     this.found = found;
-    // },
 };
-
-// let updatedOpt = {
-//     name: "",
-//     img: "",
-//     sound: new Audio(),
-//     found: new Audio(),
-// };
 
 let sortedOpts = [];
 for (const objName in objectPairs) {
@@ -136,16 +115,12 @@ function createOpt(value) {
     //SUBMIT SOUND FILE
 
     let selected = "Uhh";
-    // createOpt(selected);
-
     function submitForm(value) {
         selectOpt.push(formName.value);
         createOpt(formName.value);
         formName.value = "";
         selected = formName.value;
-        // Object.assign(updatedOpt, objectPairs.selected);
     };
-    // Object.assign(updatedOpt, objectPairs.Bob);
 
     // formSubmit.addEventListener("click", () => {
     //     submitForm(formName.value);
@@ -253,7 +228,7 @@ function play(src, audio, audioFound) {
             playImg.addEventListener("mouseover", () => {
                 isFound = true;
                 endGame(playImg, audioFound);
-            }); //FIXed SOUNDS TO DYNAMIC??????????????????
+            });
         });
 
 
@@ -273,4 +248,4 @@ function endGame(playImg, audioFound) {
 start.addEventListener("click", () => {
     let selectedOpt = objectPairs[itemSelect.value];
     play(selectedOpt.img, selectedOpt.sound, selectedOpt.found)
-}); //FIXed TO DYNAMIC????????????????????
+}); 
