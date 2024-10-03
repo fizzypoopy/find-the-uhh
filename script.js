@@ -116,6 +116,10 @@ function createOpt(value) {
         objectPairs[selectedOpt].img = formPhoto.value;
         objectPairs[selectedOpt].sound = new Audio(formSound.value);
         objectPairs[selectedOpt].found = new Audio(formFound.value);
+
+        formPhoto.value = "";
+        formSound.value = "";
+        formFound.value = "";
     };
 
     formSubmit.addEventListener("click", () => {
