@@ -7,7 +7,9 @@ let selectDiv = document.querySelector("#itemSelect");
 let selection = document.querySelector("#selection");
 let form = document.querySelector("#submitForm");
 let formName = document.querySelector("#itemName");
-let formFile = document.querySelector("#myFile");
+let formPhoto = document.querySelector("#itemPhoto");
+let formSound = document.querySelector("#itemSound");
+let formFound = document.querySelector("#itemFound");
 let formSubmit = document.querySelector("#submit");
 let alertBox = document.querySelector("#alertBox");
 
@@ -36,62 +38,89 @@ const soundUhh = new Audio("sounds/uhh.mp3");
 //OPTION FILES
 let objectPairs = {
     "Bob": {
-        // name: "Bob", 
+        name: "Bob", 
         img: "images/bob.gif",
         sound: new Audio("sounds/bobScream.mp3"), 
         found: new Audio("sounds/bobFound.mp3"), 
     },
     "Cow": {
-        // name: "Cow", 
+        name: "Cow", 
         img: "images/cow.gif",
         sound: new Audio("sounds/cowScream.mp3"),
         found: new Audio("sounds/cowFound.mp3"),
     },
     "Crocodile": {
-        // name: "Crocodile",
+        name: "Crocodile",
         img: "images/croc.gif",
         sound: new Audio("sounds/crocScream.mp3"),
         found: new Audio("sounds/crocFound.mp3"),
     },
     "Cat": {
-        // name: "Cat",
+        name: "Cat",
         img: "images/cat.gif",
         sound: new Audio("sounds/catScream.mp3"),
         found: new Audio("sounds/catFound.mp3"),
     },
-    "Bred-wip": {
-        // name: "Bred",
+    "Bred": {
+        name: "Bred-wip",
         img: "images/bred.gif",
         sound: new Audio(),
         found: new Audio(),
     },
     "Bear": {
-        // name: "Bear",
+        name: "Bear",
         img: "images/bear.gif",
         sound: new Audio("sounds/bearScream.mp3"),
         found: new Audio("sounds/bearFound.mp3"),
     },
     "Dog": {
-        // name: "Dog",
+        name: "Dog",
         img: "images/dog.gif",
         sound: new Audio("sounds/dogScream.mp3"),
         found: new Audio("sounds/dogFound.mp3"),
     },
     "Shoebill": {
-        // name: "Shoebill",
+        name: "Shoebill",
         img: "images/shoebill.gif",
         sound: new Audio("sounds/shoebillScream.mp3"),
         found: new Audio("sounds/shoebillFound.mp3"),
     },
+
 };
 
+//SCRIPTS
+//SELECTION/OPTION CREATION
 let sortedOpts = [];
 for (const objName in objectPairs) {
-    sortedOpts.push(objName);
+    sortedOpts.push(objectPairs[objName].name);
 };
 sortedOpts.sort();
 sortedOpts.map((value, _) => createOpt(value));
 
+function createOpt(value) {
+    const newOption = document.createElement("option");
+    newOption.value = value;
+    newOption.text = value;
+    selectDiv.appendChild(newOption);
+};
+
+//submitForm FUNCTION
+    let selected = "Uhh";
+    function submitForm(value) {
+        let selectedOpt = formName.value;
+        objectPairs[selectedOpt] = {};
+        objectPairs[selectedOpt].name = formName.value;
+        createOpt(formName.value);
+        formName.value = "";
+
+        objectPairs[selectedOpt].img = formPhoto.value;
+        objectPairs[selectedOpt].sound = new Audio(formSound.value);
+        objectPairs[selectedOpt].found = new Audio(formFound.value);
+    };
+
+    formSubmit.addEventListener("click", () => {
+        submitForm(formName.value);
+    });
 
 //UPDATE CENTER
 selectDiv.addEventListener("click", () => updateCenter(itemSelect.value));
@@ -103,31 +132,7 @@ function updateCenter(value) {
     };
 };
 
-function createOpt(value) {
-    const newOption = document.createElement("option");
-    newOption.value = value;
-    newOption.text = value;
-    selectDiv.appendChild(newOption);
-};
-
-//submitForm FUNCTION
-    //SUBMIT ITEM NAME
-    //SUBMIT SOUND FILE
-
-    let selected = "Uhh";
-    function submitForm(value) {
-        selectOpt.push(formName.value);
-        createOpt(formName.value);
-        formName.value = "";
-        selected = formName.value;
-    };
-
-    // formSubmit.addEventListener("click", () => {
-    //     submitForm(formName.value);
-    //     alertBox.fadeIn(300).delay(1500).fadeOut(400); //????????????/
-    // });
-
-//SCRIPT
+//SOUND RESET
 function playItemSound(src) {
     src.currentTime = 0;
     src.play();
