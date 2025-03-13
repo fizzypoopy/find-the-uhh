@@ -1,0 +1,94 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#header, #center, footer {
+    margin: 1em;
+}
+
+/*HEADER*/
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#submitForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1em;
+}
+
+.itemForm {
+    border: 0.1em solid gray;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+    gap: 0.25em;
+}
+
+#alertBox {
+    padding: 1em;
+    margin: 0.25em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
+}
+
+/*CENTER*/
+#center {
+    align-content: center;
+    flex-grow: 1;
+    position: relative;
+
+    display: flex;
+    justify-content: center; /* Optional: Centers the image horizontally */
+    align-items: center; /* Optional: Centers the image vertically */
+    flex-wrap: wrap;
+} 
+
+#center img {
+    max-width: 100%; /* Ensures the image doesn't overflow the container */
+    max-height: 100%; /* Ensures the image doesn't overflow the container */
+}
+
+#startBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#soundPara {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+#soundPara img {
+    display: inline-block;
+    height: 2em;
+}
+
+/*FOOTER*/
+footer {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
